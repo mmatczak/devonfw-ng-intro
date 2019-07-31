@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Book } from '../book.model';
 
 @Component({
@@ -6,13 +6,7 @@ import { Book } from '../book.model';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent  {
+export class BookDetailsComponent {
+  @Input()
   book: Book;
-
-  constructor() {
-    this.book = {
-      title: 'JavaScript. The good parts',
-      author: 'Douglas Crockford'
-    };
-  }
 }
