@@ -1,25 +1,43 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BookDetailsComponent } from './book-details.component';
+import { async, TestBed } from '@angular/core/testing';
 
-describe('BookDetailsComponent', () => {
-  let component: BookDetailsComponent;
-  let fixture: ComponentFixture<BookDetailsComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BookDetailsComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BookDetailsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+fdescribe('BookDetailsComponent', () => {
+  describe('(class)', () => {
+    it('creates a component and exposes a book', () => {
+      // when
+      const component = new BookDetailsComponent();
+      // then
+      expect(component.book).toBeDefined();
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('(DOM)', () => {
+    let fixture;
+    let element: HTMLElement;
+
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        declarations: [BookDetailsComponent]
+      }).compileComponents();
+    }));
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(BookDetailsComponent);
+      element = fixture.nativeElement;
+    });
+
+    it('creates a component', () => {
+      // then
+      expect(fixture.componentInstance).toBeDefined();
+    });
+
+    it('renders title', () => {
+      // when
+      fixture.detectChanges();
+      const titleElement = element.querySelector<HTMLDivElement>('div#title');
+      // then
+      expect(titleElement).toBeDefined();
+      expect(titleElement.textContent).toBe('JavaScript. The good parts');
+    });
   });
 });
