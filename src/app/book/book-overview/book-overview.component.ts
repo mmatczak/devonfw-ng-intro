@@ -18,11 +18,13 @@ export class BookOverviewComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.books.push({
+        id: 0,
         title: 'JavaScript. The good parts',
         author: 'Douglas Crockford'
       });
 
       this.books.push({
+        id: 1,
         title: 'Angular for nerds',
         author: 'Marek Matczak'
       });
@@ -35,5 +37,11 @@ export class BookOverviewComponent implements OnInit {
 
   isBookSelected(book: Book) {
     return this.selectedBook === book;
+  }
+
+  updateBook(book: Book) {
+    this.books = this.books.map(
+      currentBook => currentBook.id === book.id ? book : currentBook);
+    this.selectedBook = book;
   }
 }
