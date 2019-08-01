@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { BookOverviewComponent } from './book/book-overview/book-overview.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { SharedModule } from './shared/shared.module';
+import { BookDetailsResolver } from './book/book-details/book-details.resolver';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,13 @@ import { SharedModule } from './shared/shared.module';
       {
         path: 'book',
         component: BookDetailsComponent
+      },
+      {
+        path: 'book/:bookId',
+        component: BookDetailsComponent,
+        resolve: {
+          book: BookDetailsResolver
+        }
       }]
     )
   ],
