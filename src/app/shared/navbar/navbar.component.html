@@ -9,4 +9,7 @@
          [routerLinkActiveOptions]="{exact: true}">Add new book...</a>
     </div>
   </div>
+  <div *ngIf="spinnerOn" class="spinner-border text-light" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </nav>
