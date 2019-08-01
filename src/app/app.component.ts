@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="container-fluid">
-      <app-book-overview></app-book-overview>
+      <app-navbar></app-navbar>
+      <router-outlet></router-outlet>
     </div>
   `,
   styleUrls: ['./app.component.scss']
