@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SearchCriteria } from '../../book.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Role } from '../../../shared/security/security.model';
 
 @Component({
   selector: 'app-search-criteria',

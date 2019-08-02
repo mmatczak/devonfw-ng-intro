@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "start:server": "json-server --watch server/db.json --routes ./server/routes.json",
+    "start:server": "json-server --watch server/db.json --routes ./server/routes.json --static ./dist/my-dream-app",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
