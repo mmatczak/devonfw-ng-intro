@@ -1,15 +1,15 @@
 import { BookDetailsComponent } from './book-details.component';
 import { async, TestBed } from '@angular/core/testing';
 
-fdescribe('BookDetailsComponent', () => {
-  describe('(class)', () => {
-    it('creates a component and exposes a book', () => {
-      // when
-      const component = new BookDetailsComponent();
-      // then
-      expect(component.book).toBeDefined();
-    });
-  });
+describe('BookDetailsComponent', () => {
+  // describe('(class)', () => {
+  //   it('creates a component and exposes a book', () => {
+  //     // when
+  //     const component = new BookDetailsComponent();
+  //     // then
+  //     expect(component.book).toBeDefined();
+  //   });
+  // });
 
   describe('(DOM)', () => {
     let fixture;
