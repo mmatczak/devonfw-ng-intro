@@ -1,8 +1,7 @@
-import { Book, BookProperties } from './book.model';
+import { Book, BookProperties, SearchCriteria } from './book.model';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +22,18 @@ export class BookService {
     }]);
 
   constructor(private readonly http: HttpClient) {
+  }
+
+  search(searchCriteria: SearchCriteria): Observable<Book[]> {
+    let params = new HttpParams();
+    if (searchCriteria.author) {
+      params = params.append('author', searchCriteria.author);
+    }
+    if (searchCriteria.title) {
+      params = params.append('title', searchCriteria.title);
+    }
+
+    return this.http.get<Book[]>('api/books', {params});
   }
 
   findAll(): Observable<Book[]> {

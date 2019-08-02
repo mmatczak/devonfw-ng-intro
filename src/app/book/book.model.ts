@@ -5,3 +5,8 @@ export interface Book {
 }
 
 export type BookProperties = Pick<Book, Exclude<keyof Book, 'id'>>;
+
+export interface SearchCriteria {
+  author?: string;
+  title?: string;
+}
