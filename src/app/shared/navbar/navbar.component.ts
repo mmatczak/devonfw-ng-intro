@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ResolveEnd, ResolveStart, Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, ResolveEnd, ResolveStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +11,13 @@ export class NavbarComponent {
 
   constructor(router: Router) {
     router.events.subscribe(routerEvent => {
+      const isNavigationEnd = routerEvent instanceof NavigationEnd
+        || routerEvent instanceof NavigationCancel
+        || routerEvent instanceof NavigationError;
+
       if (routerEvent instanceof ResolveStart) {
         this.spinnerOn = true;
-      } else if (routerEvent instanceof ResolveEnd) {
+      } else if (routerEvent instanceof ResolveEnd || isNavigationEnd) {
         this.spinnerOn = false;
       }
     });
