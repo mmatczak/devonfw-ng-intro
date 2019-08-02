@@ -8,6 +8,7 @@ import { BookOverviewComponent } from './book/book-overview/book-overview.compon
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { SharedModule } from './shared/shared.module';
 import { BookDetailsResolver } from './book/book-details/book-details.resolver';
+import { HttpClientModule } from '@angular/common/http';
 
 
 export const routes = [
@@ -35,6 +36,7 @@ export const routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BookModule,
     SharedModule,
     RouterModule.forRoot(routes
