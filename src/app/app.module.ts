@@ -9,6 +9,26 @@ import { BookDetailsComponent } from './book/book-details/book-details.component
 import { SharedModule } from './shared/shared.module';
 import { BookDetailsResolver } from './book/book-details/book-details.resolver';
 
+
+export const routes = [
+  {path: '', pathMatch: 'full', redirectTo: '/books'},
+  {
+    path: 'books',
+    component: BookOverviewComponent,
+
+  },
+  {
+    path: 'book',
+    component: BookDetailsComponent
+  },
+  {
+    path: 'book/:bookId',
+    component: BookDetailsComponent,
+    resolve: {
+      book: BookDetailsResolver
+    }
+  }];
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,24 +37,7 @@ import { BookDetailsResolver } from './book/book-details/book-details.resolver';
     BrowserModule,
     BookModule,
     SharedModule,
-    RouterModule.forRoot([
-      {path: '', pathMatch: 'full', redirectTo: '/books'},
-      {
-        path: 'books',
-        component: BookOverviewComponent,
-
-      },
-      {
-        path: 'book',
-        component: BookDetailsComponent
-      },
-      {
-        path: 'book/:bookId',
-        component: BookDetailsComponent,
-        resolve: {
-          book: BookDetailsResolver
-        }
-      }]
+    RouterModule.forRoot(routes
     )
   ],
   providers: [],

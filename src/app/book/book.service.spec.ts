@@ -1,6 +1,6 @@
 import { BookService } from './book.service';
 
-fdescribe('BookService', () => {
+describe('BookService', () => {
   it('returns two books initially', () => {
     // given
     const service = new BookService();
